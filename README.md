@@ -86,10 +86,10 @@ We use a **Temporal Convolutional Network (TCN)** to classify dance moves based 
 
 ## 📦 Dataset
 
+- Source: [UJAnnChor Dataset](https://github.com/dvanderhaar/UJAnnChor)  
 - Size: ~10.5 GB  
 - Annotated ballet solo videos, categorized by move  
 - Used for both training and evaluation
-
 ---
 
 ## 🔍 Use Cases
