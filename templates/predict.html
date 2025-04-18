@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100%; /* Full height for the body */
+            margin: 0; /* Remove default margin */
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container-style {
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 3px;
+        }
+
+        form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .image-container img {
+            margin: 10px;
+            width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .main-container {
+            display: flex; /* Enables flexbox */
+            flex-direction: column; /* Stack children vertically */
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            height: 100vh; /* Full viewport height */
+            gap: 20px; /* Optional: space between the containers */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="container">
+            <h1>Processing Video Frames ... </h1>
+            <div class="image-container">
+                {% for image in images %}
+                <img src="data:image/png;base64,{{ image }}" alt="Visualized Keypoints" />
+                {% endfor %}
+            </div>
+        </div>
+        <div class="container-style">
+            <h1>Video Uploaded Successfully</h1>
+            <p>Video: {{ file_name }}</p>
+            <form action="/predict" method="post">
+                <input type="hidden" name="video_path" value="{{ video_path }}">
+                <input type="submit" value="Predict">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
